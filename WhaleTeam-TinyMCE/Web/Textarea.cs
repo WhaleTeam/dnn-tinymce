@@ -74,7 +74,7 @@ using Globals = DotNetNuke.Common.Globals;
             {
                 string outURI = null;
 
-                outURI = ProviderPath + "Includes/tinymce.min.js";
+                outURI = ProviderPath + "tinymce.min.js";
                 if (!File.Exists(this.Context.Server.MapPath(outURI)))
                 {
                     throw new Exception("Could not locate TinyMCE by URI:" + outURI + ", Physical path:" + this.Context.Server.MapPath(outURI) + ". Make sure that you configured the installPath to a valid location in your web.config. This path should be an relative or site absolute URI to where TinyMCE is located.");
