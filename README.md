@@ -27,3 +27,10 @@ Installations instructions
 ```
 
 **notes** : providerPath is where you paste the TinyMCE 4 sources.
+
+Changelog
+---------
+
+**2014 Feb 10 - v1.0.0**
+
+Release basic version of TinyMCE 4 for DNN 7
