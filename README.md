@@ -1,4 +1,4 @@
-TinyMCE editor Provider for DNN
+TinyMCE editor Provider for DotNetNuke
 ===========
 
 Original code http://www.ventrian.com/resources/projects/tinymce-provider
