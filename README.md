@@ -31,6 +31,6 @@ Installations instructions
 Changelog
 ---------
 
-**2014 Feb 10 - v1.0.0**
+####2014 Feb 10 - v1.0.0
 
-Release basic version of TinyMCE 4 for DNN 7
+Release basic version of TinyMCE 4 Provider for DNN 7
