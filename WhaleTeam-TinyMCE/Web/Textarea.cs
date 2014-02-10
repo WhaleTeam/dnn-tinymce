@@ -34,6 +34,7 @@ using Globals = DotNetNuke.Common.Globals;
         private static bool? _hasMsAjax;
         private NameValueCollection _settings;
         private string _providerPath;
+        private string _tinymceVersion;
 
         #endregion
 
@@ -61,6 +62,10 @@ using Globals = DotNetNuke.Common.Globals;
                     {
                         _providerPath = objProvider.Attributes[key];
                     }
+                    else if ((key.ToLower() == "tinymceversion"))
+                    {
+                        _tinymceVersion = objProvider.Attributes[key];
+                    }
                 }
             }
         }
@@ -74,7 +79,11 @@ using Globals = DotNetNuke.Common.Globals;
             {
                 string outURI = null;
 
-                outURI = ProviderPath + "tinymce.min.js";
+                if (TinyMCEVersion == "4")
+                    outURI = ProviderPath + "tinymce.min.js";
+                else
+                    outURI = ProviderPath + "tiny_mce.js";
+
                 if (!File.Exists(this.Context.Server.MapPath(outURI)))
                 {
                     throw new Exception("Could not locate TinyMCE by URI:" + outURI + ", Physical path:" + this.Context.Server.MapPath(outURI) + ". Make sure that you configured the installPath to a valid location in your web.config. This path should be an relative or site absolute URI to where TinyMCE is located.");
@@ -174,6 +183,11 @@ using Globals = DotNetNuke.Common.Globals;
             get { return _providerPath; }
         }
 
+        public string TinyMCEVersion
+        {
+            get { return _tinymceVersion; }
+        }
+
         #endregion
 
         #region "Methods"
@@ -230,7 +244,10 @@ using Globals = DotNetNuke.Common.Globals;
             builder.AppendLine("<script type='text/javascript'>");
             builder.AppendLine("//<![CDATA[");
             builder.AppendLine(";(function ($) {");
-            builder.AppendLine("tinymce.init({");
+            if (TinyMCEVersion == "4")
+                builder.AppendLine("tinymce.init({");
+            else
+                builder.AppendLine("tinyMCE.init({");
 
             foreach (string key in this.Settings.Keys)
             {
